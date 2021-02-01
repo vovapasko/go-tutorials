@@ -5,7 +5,7 @@ import (
 )
 
 func main() {
-	createFile("cities.txt", []string{"Rio\n", "New York\n", "Berlin\n"})
+	createFile("cities.txt", []string{"Rio", "New York", "Berlin"})
 }
 
 func createFile(filename string, lines []string) {
@@ -19,5 +19,6 @@ func createFile(filename string, lines []string) {
 
 	for _, line := range lines {
 		file.WriteString(line)
+		file.WriteString("\n")
 	}
 }
