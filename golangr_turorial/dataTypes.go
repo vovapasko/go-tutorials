@@ -4,6 +4,12 @@ import (
 	"fmt"
 )
 
+type House struct {
+	noRooms int
+	price   float32
+	city    string
+}
+
 func main() {
 	// elements := make(map[string]string)
 	// elements["O"] = "Oxygen"
@@ -26,5 +32,10 @@ func main() {
 		},
 	}
 	fmt.Println(website["Yandex"]["Comment"])
+	var bigHouse House
+	bigHouse.price = 12345678.213
+	bigHouse.city = "New York"
+	bigHouse.noRooms = 12
+	fmt.Print(bigHouse)
 
 }
