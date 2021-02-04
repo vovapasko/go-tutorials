@@ -14,6 +14,7 @@ func main() {
 	s3, num := getMultiple()
 	fmt.Println(s3, num)
 	printNames("Vova", "Pasha", "Petya")
+	useRecursion(10)
 }
 
 func addNumbers(a int, b int) int {
@@ -42,4 +43,14 @@ func printNames(names ...string) {
 	for _, name := range names {
 		fmt.Println(name)
 	}
+}
+
+func useRecursion(x int) {
+	if x == 0 {
+		fmt.Println(0)
+		return
+	}
+	fmt.Println(x)
+	useRecursion(x - 1)
+
 }
