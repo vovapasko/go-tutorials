@@ -8,7 +8,32 @@ import (
 func main() {
 	// funcChannels()
 	// syncBuffer()
-	channelSync()
+	// channelSync()
+	receiveOnlyTutorial()
+	sendOnlyTutorial()
+}
+
+func receiveOnlyTutorial() {
+	c := make(chan string, 1)
+	c <- "receive Only"
+	receiveOnlyFunc(c)
+}
+
+func receiveOnlyFunc(c <-chan string) {
+	fmt.Println(<-c)
+	// c <- "Uncomment me and you receive an error"
+}
+
+func sendOnlyTutorial() {
+	c := make(chan string, 1)
+	sendOnlyFunc(c)
+	fmt.Println(<-c)
+}
+
+func sendOnlyFunc(c chan<- string) {
+	c <- "send only"
+	// Uncomment next line and you get an error
+	// fmt.Println(<-c)
 }
 
 func channelSync() {
