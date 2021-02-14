@@ -11,7 +11,26 @@ func main() {
 	// channelSync()
 	// receiveOnlyTutorial()
 	// sendOnlyTutorial()
-	selectChannel()
+	// selectChannel()
+	timeoutChannel()
+}
+
+func timeoutChannel() {
+	c5 := make(chan string)
+	go f5(c5)
+	select {
+	case msg1 := <-c5:
+		fmt.Println(msg1)
+	case <-time.After(3 * time.Second):
+		fmt.Println("Timeout")
+	}
+}
+
+func f5(c chan string) {
+	for {
+		time.Sleep(10 * time.Second)
+		c <- "10 seconds passed"
+	}
 }
 
 func selectChannel() {
@@ -27,7 +46,10 @@ func selectChannel() {
 			fmt.Println(msg1)
 		case msg2 := <-c4:
 			fmt.Println(msg2)
+			// case <-time.After(5 * time.Second):
+			// 	fmt.Println("Timeout")
 		}
+
 	}
 	fmt.Println("Goroutines finished")
 }
