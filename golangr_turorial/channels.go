@@ -12,7 +12,23 @@ func main() {
 	// receiveOnlyTutorial()
 	// sendOnlyTutorial()
 	// selectChannel()
-	timeoutChannel()
+	// timeoutChannel()
+	closeChannel()
+}
+
+func closeChannel() {
+	c := make(chan int, 5)
+
+	c <- 1
+	fmt.Println(<-c)
+	c <- 2
+	fmt.Println(<-c)
+	close(c)
+	// error
+	// c <- 3
+	//will display 0
+	// fmt.Println(<-c)
+
 }
 
 func timeoutChannel() {
