@@ -1,10 +1,34 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 func main() {
 	// funcChannels()
 	// syncBuffer()
+	channelSync()
+}
+
+func channelSync() {
+	done := make(chan bool, 1)
+	go task(done)
+	if <-done {
+		go tast2()
+		fmt.Scanln()
+	}
+}
+
+func task(done chan bool) {
+	fmt.Print("Task 1 (gorotine) running...")
+	time.Sleep(time.Second)
+	fmt.Println("done")
+	done <- true
+}
+
+func tast2() {
+	fmt.Print("Task 2 (gorotine) running...")
 }
 
 func funcChannels() {
